@@ -40,9 +40,9 @@ describe("Budo API", () => {
 		describe("POST /users/add", () => {
 			it("It should POST a new user", (done) => {
 				const user = {
-					username: "RandomUser3",
-					email: "user3@mail.com",
-					walletAddress: "72cb01ki-f713-442a-876c-ac76abae17dd",
+					username: "RandomUser1",
+					email: "user1@mail.com",
+					walletAddress: "72cb01ki-f723-442a-876c-ac76abae17dd",
 					bio: "new bioooooo",
 					profilePictureUrl: "stringasd",
 					createdBy: "5b0c790a-d664-4ff5-857f-a46467fa97be",
@@ -56,7 +56,7 @@ describe("Budo API", () => {
 						expect(response.body).to.exist;
 						response.body.should.be.a("object");
 						response.body.should.have.property("id");
-						response.body.should.have.property("username").eq("RandomUser3");
+						response.body.should.have.property("username").eq("RandomUser1");
 						userId = response.body.id;
 						done();
 					});
@@ -68,7 +68,7 @@ describe("Budo API", () => {
 		 */
 		describe("GET /users/:id", () => {
 			it("It should GET a user by ID", (done) => {
-				const userId = "822b3f8a-62b5-4f61-8fae-5ecc5660a769";
+				// const userId = "822b3f8a-62b5-4f61-8fae-5ecc5660a769";
 
 				chai.request(server)
 					.get("/users/" + userId)
@@ -90,7 +90,7 @@ describe("Budo API", () => {
 		 */
 		describe("PUT /users/:id/update", () => {
 			it("It should PUT an existing user", (done) => {
-				const userId = "5a444eff-bd69-497c-8449-09d2a3deeddf";
+				// const userId = "5a444eff-bd69-497c-8449-09d2a3deeddf";
 				const user = {
 					username: "RandomUser2updated",
 					email: "user2updated@mail.com",
@@ -135,9 +135,9 @@ describe("Budo API", () => {
 		// });
 		describe("DELETE /users/delete/:id", () => {
 			it("It should DELETE an existing user", (done) => {
-				let userId = "5a444eff-bd69-497c-8449-09d2a3deeddf";
+				// let userId = "5a444eff-bd69-497c-8449-09d2a3deeddf";
 				chai.request(server)
-					.delete("/users/delete/5a444eff-bd69-497c-8449-09d2a3deeddf")
+					.delete("/users/delete/" + userId)
 					.end((err, response) => {
 						response.should.have.status(200);
 						done();
@@ -145,6 +145,7 @@ describe("Budo API", () => {
 			});
 		});
 	});
+	var communityId;
 	describe("communities Api", () => {
 		describe("GET /communities", () => {
 			it("It should GET all the communities", (done) => {
@@ -194,6 +195,7 @@ describe("Budo API", () => {
 						response.body.should.have.property("id");
 						response.body.should.have.property("name").eq("a Community2");
 						response.body.should.have.property("slug").eq("a slug2");
+						communityId = response.body.id;
 						done();
 					});
 			});
@@ -204,7 +206,7 @@ describe("Budo API", () => {
 		 */
 		describe("GET /communities/:id", () => {
 			it("It should GET a community by ID", (done) => {
-				const communityId = "89ee6c4a-f271-4773-81c7-91b15db72fc3";
+				// const communityId = "89ee6c4a-f271-4773-81c7-91b15db72fc3";
 
 				chai.request(server)
 					.get("/communities/" + communityId)
@@ -226,7 +228,7 @@ describe("Budo API", () => {
 		 */
 		describe("PUT /communities/:id/update", () => {
 			it("It should PUT an existing community", (done) => {
-				const communityId = "89ee6c4a-f271-4773-81c7-91b15db72fc3";
+				// const communityId = "89ee6c4a-f271-4773-81c7-91b15db72fc3";
 				const community = {
 					name: "a Community updated",
 					slug: "a slug updated",
@@ -259,9 +261,9 @@ describe("Budo API", () => {
 		 */
 		describe("DELETE /users/delete/:id", () => {
 			it("It should DELETE an existing user", (done) => {
-				let communityId = "89ee6c4a-f271-4773-81c7-91b15db72fc3";
+				// let communityId = "89ee6c4a-f271-4773-81c7-91b15db72fc3";
 				chai.request(server)
-					.delete("/users/delete/89ee6c4a-f271-4773-81c7-91b15db72fc3")
+					.delete("/users/delete/" + communityId)
 					.end((err, response) => {
 						response.should.have.status(200);
 						done();
