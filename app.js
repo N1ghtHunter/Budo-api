@@ -10,8 +10,6 @@ const db = require("./config/database");
 db.authenticate()
 	.then(() => console.log("Database connected..."))
 	.catch((err) => console.log("Error: " + err));
-//EJS
-app.set("view engine", "ejs");
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

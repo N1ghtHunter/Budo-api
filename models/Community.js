@@ -6,15 +6,19 @@ const Community = db.define("community", {
 		type: Sequelize.UUID,
 		defaultValue: Sequelize.UUIDV4,
 		primaryKey: true,
+		allowNull: false,
 	},
 	name: {
 		type: Sequelize.STRING,
+		allowNull: false,
 	},
 	slug: {
 		type: Sequelize.STRING,
+		allowNull: false,
 	},
 	description: {
 		type: Sequelize.STRING,
+		allowNull: false,
 	},
 	logoUrl: {
 		type: Sequelize.STRING,
@@ -30,12 +34,14 @@ const Community = db.define("community", {
 	},
 	createdAt: {
 		type: Sequelize.DATE,
+		allowNull: false,
 	},
 	createdBy: {
 		type: Sequelize.UUID,
 	},
 	updatedAt: {
 		type: Sequelize.DATE,
+		allowNull: false,
 	},
 	updatedBy: {
 		type: Sequelize.UUID,
@@ -43,6 +49,6 @@ const Community = db.define("community", {
 	isDeleted: { type: Sequelize.BOOLEAN },
 });
 Community.sync().then(() => {
-	console.log("community table created");
+	console.log("Community table Synced");
 });
 module.exports = Community;

@@ -6,15 +6,21 @@ const User = db.define("user", {
 		type: Sequelize.UUID,
 		defaultValue: Sequelize.UUIDV4,
 		primaryKey: true,
+		allowNull: false,
 	},
 	username: {
 		type: Sequelize.STRING,
+		allowNull: false,
 	},
 	email: {
 		type: Sequelize.STRING,
+		allowNull: false,
+		unique: true,
 	},
 	walletAddress: {
 		type: Sequelize.STRING,
+		allowNull: false,
+		unique: true,
 	},
 	bio: {
 		type: Sequelize.STRING,
@@ -24,12 +30,14 @@ const User = db.define("user", {
 	},
 	createdAt: {
 		type: Sequelize.DATE,
+		allowNull: false,
 	},
 	createdBy: {
 		type: Sequelize.UUID,
 	},
 	updatedAt: {
 		type: Sequelize.DATE,
+		allowNull: false,
 	},
 	updatedBy: {
 		type: Sequelize.UUID,
@@ -37,6 +45,6 @@ const User = db.define("user", {
 	isDeleted: { type: Sequelize.BOOLEAN },
 });
 User.sync().then(() => {
-	console.log("user table created");
+	console.log("User table synced");
 });
 module.exports = User;
